@@ -25,13 +25,13 @@ export const Select: React.FC<SelectProps> = ({
       <select
         id={selectId}
         className={cn(
-          'block w-full rounded-lg border border-slate-700 bg-slate-900/50 text-slate-100 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 py-2 pl-3 pr-10',
+          'block w-full rounded-none border border-white/10 bg-brand-dark text-stone-200 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold py-2 pl-3 pr-10 font-mono text-sm',
           className
         )}
         {...props}
       >
         {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>
+          <option key={opt.value} value={opt.value} className="bg-brand-dark text-stone-200">
             {opt.label}
           </option>
         ))}

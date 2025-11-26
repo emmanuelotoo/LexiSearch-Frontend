@@ -8,7 +8,6 @@ import { CaseContentViewer } from '../components/lexi/CaseContentViewer';
 import { CaseCitationsPanel } from '../components/lexi/CaseCitationsPanel';
 import { ChatThread } from '../components/lexi/ChatThread';
 import { ChatInput } from '../components/lexi/ChatInput';
-import { Card } from '../components/ui/Card';
 import { Spinner } from '../components/ui/Spinner';
 import { useCase } from '../hooks/useCase';
 import { useChat } from '../hooks/useChat';
@@ -43,52 +42,70 @@ export const CaseViewerPage: React.FC = () => {
 
   return (
     <MainLayout>
-      <div className="max-w-[1600px] mx-auto w-full px-4 py-6">
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Search', href: '/search' },
-            { label: caseData.title },
-          ]}
-        />
-
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_350px] gap-6">
-          {/* Main Content Column */}
-          <div className="space-y-6">
-            <CaseSummaryPanel
-              caseData={caseData}
-              onSave={() => console.log('Saved case')}
-              onAskAI={() => document.getElementById('case-chat-input')?.focus()}
-            />
-            
-            <CaseContentViewer
-              contentBlocks={caseData.contentBlocks}
-              onHighlightClick={(id) => console.log('Clicked highlight', id)}
+      <div className="flex flex-col min-h-screen bg-brand-dark">
+        {/* Top Navigation Bar */}
+        <div className="border-b border-white/10 bg-brand-dark/95 backdrop-blur-md sticky top-16 z-20">
+          <div className="max-w-[1800px] mx-auto px-6 py-4">
+            <Breadcrumbs
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Search', href: '/search' },
+                { label: caseData.title },
+              ]}
             />
           </div>
+        </div>
 
-          {/* Sidebar Column */}
-          <div className="space-y-6 xl:sticky xl:top-24 h-fit">
-            <Card className="flex flex-col h-[500px] p-0 overflow-hidden border-white/5">
-              <div className="p-3 bg-brand-surface border-b border-white/5 font-semibold text-brand-gold text-sm font-serif tracking-wide">
-                AI Case Assistant
-              </div>
-              <ChatThread messages={messages} isLoading={isChatLoading} />
-              <div className="p-3 border-t border-white/5 bg-brand-surface/50">
-                <ChatInput
-                  onSend={sendMessage}
-                  isLoading={isChatLoading}
-                  placeholder="Ask about this case..."
-                />
-              </div>
-            </Card>
+        <div className="flex-1 max-w-[1800px] mx-auto w-full px-6 py-8">
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_400px] gap-12">
+            {/* Main Content Column */}
+            <div className="space-y-12">
+              <CaseSummaryPanel
+                caseData={caseData}
+                onSave={() => console.log('Saved case')}
+                onAskAI={() => document.getElementById('case-chat-input')?.focus()}
+              />
+              
+              <CaseContentViewer
+                contentBlocks={caseData.contentBlocks}
+                onHighlightClick={(id) => console.log('Clicked highlight', id)}
+              />
+            </div>
 
-            <CaseMetadata caseData={caseData} />
-            
-            <CaseCitationsPanel
-              citations={citations}
-              onSelectCitation={(c) => navigate(`/cases/${c.id}`)}
-            />
+            {/* Sidebar Column */}
+            <div className="space-y-6 xl:sticky xl:top-40 h-fit">
+              {/* AI Assistant Panel */}
+              <div className="border border-white/10 bg-brand-surface/5 flex flex-col h-[600px]">
+                <div className="p-4 border-b border-white/10 flex items-center justify-between bg-brand-dark">
+                  <div className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                    <span className="font-mono text-xs text-stone-300 uppercase tracking-widest">
+                      /Context_Assistant
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="flex-1 overflow-hidden relative">
+                   <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02]" />
+                   <ChatThread messages={messages} isLoading={isChatLoading} />
+                </div>
+
+                <div className="p-4 border-t border-white/10 bg-brand-dark">
+                  <ChatInput
+                    onSend={sendMessage}
+                    isLoading={isChatLoading}
+                    placeholder="Query case context..."
+                  />
+                </div>
+              </div>
+
+              <CaseMetadata caseData={caseData} />
+              
+              <CaseCitationsPanel
+                citations={citations}
+                onSelectCitation={(c) => navigate(`/cases/${c.id}`)}
+              />
+            </div>
           </div>
         </div>
       </div>

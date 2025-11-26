@@ -4,7 +4,7 @@ import { cn } from './Button';
 export const Spinner: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props }) => {
   return (
     <svg
-      className={cn('animate-spin h-5 w-5 text-sky-500', className)}
+      className={cn('animate-spin h-5 w-5 text-brand-gold', className)}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

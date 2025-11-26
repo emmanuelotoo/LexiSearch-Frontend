@@ -18,20 +18,20 @@ export const TextArea: React.FC<TextAreaProps> = ({
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={areaId} className="block text-sm font-medium text-slate-300 mb-1.5">
+        <label htmlFor={areaId} className="block text-sm font-mono text-stone-400 mb-1.5 uppercase tracking-wider text-xs">
           {label}
         </label>
       )}
       <textarea
         id={areaId}
         className={cn(
-          'block w-full rounded-lg border border-slate-700 bg-slate-900/50 text-slate-100 placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors p-3',
-          error ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : '',
+          'block w-full rounded-none border border-white/10 bg-brand-dark/50 text-stone-100 placeholder-stone-600 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors p-3 font-mono text-sm',
+          error ? 'border-red-500/50 focus:border-red-500 focus:ring-red-500/20' : '',
           className
         )}
         {...props}
       />
-      {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
+      {error && <p className="mt-1 text-xs font-mono text-red-500">{error}</p>}
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Case } from '../../types/case';
 import { Button } from '../ui/Button';
-import { Badge } from '../ui/Badge';
 
 interface CaseSummaryPanelProps {
   caseData: Case;
@@ -15,31 +14,50 @@ export const CaseSummaryPanel: React.FC<CaseSummaryPanelProps> = ({
   onAskAI,
 }) => {
   return (
-    <div className="space-y-4">
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-        <div className="space-y-2">
-          <h1 className="text-3xl font-bold text-slate-50">{caseData.title}</h1>
-          <div className="flex flex-wrap items-center gap-3 text-sm text-slate-400">
-            <span className="font-mono bg-slate-800 px-2 py-0.5 rounded">{caseData.citation}</span>
-            <span>•</span>
-            <span>{caseData.court}</span>
-            <span>•</span>
-            <span>{caseData.date}</span>
+    <div className="space-y-8 border-b border-white/10 pb-8">
+      {/* Header Section */}
+      <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+        <div className="space-y-4">
+          <div className="flex items-center gap-3 text-xs font-mono tracking-wider">
+             <span className="text-brand-gold bg-brand-gold/10 px-2 py-1 rounded-sm border border-brand-gold/20">
+               {caseData.citation}
+             </span>
+             <span className="text-stone-600">|</span>
+             <span className="text-stone-400 uppercase">{caseData.court}</span>
+             <span className="text-stone-600">|</span>
+             <span className="text-stone-500">{caseData.date}</span>
           </div>
+          
+          <h1 className="text-3xl md:text-4xl font-serif font-bold text-stone-100 leading-tight max-w-4xl">
+            {caseData.title}
+          </h1>
         </div>
-        <div className="flex gap-2">
-          <Button variant="secondary" onClick={onSave} iconLeft="🔖">
-            Save
+
+        <div className="flex gap-3">
+          <Button 
+            variant="outline" 
+            onClick={onSave} 
+            className="border-white/10 hover:border-brand-gold/50 text-stone-400 hover:text-brand-gold font-mono text-xs uppercase tracking-wider"
+          >
+            🔖 Save_Case
           </Button>
-          <Button onClick={onAskAI} iconLeft="✨">
-            Ask AI
+          <Button 
+            onClick={onAskAI} 
+            className="bg-brand-gold text-brand-dark hover:bg-white font-bold font-mono text-xs uppercase tracking-wider"
+          >
+            ✨ Analyze
           </Button>
         </div>
       </div>
 
-      <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-4">
-        <h3 className="text-sm font-semibold text-slate-300 mb-2">Summary</h3>
-        <p className="text-slate-300 leading-relaxed">{caseData.summary}</p>
+      {/* Abstract / Summary Block */}
+      <div className="relative bg-brand-surface/5 border-l-2 border-brand-gold/50 p-6 md:p-8">
+        <div className="absolute top-0 right-0 p-2">
+          <span className="text-[10px] font-mono text-stone-600 uppercase tracking-widest">/Abstract</span>
+        </div>
+        <p className="text-stone-300 leading-relaxed font-sans text-lg">
+          {caseData.summary}
+        </p>
       </div>
     </div>
   );

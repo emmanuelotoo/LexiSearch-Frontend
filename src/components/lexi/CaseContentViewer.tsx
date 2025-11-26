@@ -17,33 +17,46 @@ export const CaseContentViewer: React.FC<CaseContentViewerProps> = ({
   onHighlightClick,
 }) => {
   if (!contentBlocks) {
-    return <div className="text-slate-500 italic p-4">No content available.</div>;
+    return <div className="text-stone-500 italic p-4 font-mono text-sm">No content vectors available.</div>;
   }
 
   return (
-    <div className="bg-slate-900/30 border border-slate-800 rounded-xl p-6 md:p-8 space-y-6 font-serif text-lg leading-relaxed text-slate-200">
-      {contentBlocks.map((block) => {
-        if (block.type === 'heading') {
-          return (
-            <h3 key={block.id} className="text-xl font-bold text-slate-50 font-sans mt-6 mb-2">
-              {block.text}
-            </h3>
-          );
-        }
-        if (block.type === 'highlight') {
-          return (
-            <p
-              key={block.id}
-              className="bg-yellow-900/30 border-l-4 border-yellow-600 pl-4 py-2 my-4 cursor-pointer hover:bg-yellow-900/40 transition-colors"
-              onClick={() => onHighlightClick?.(block.id)}
-              title="AI Highlighted Key Passage"
-            >
-              {block.text}
-            </p>
-          );
-        }
-        return <p key={block.id}>{block.text}</p>;
-      })}
+    <div className="relative">
+      {/* Document Header */}
+      <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-4">
+        <span className="font-mono text-xs text-brand-gold uppercase tracking-widest">/Full_Text_Opinion</span>
+        <div className="flex gap-2">
+           <span className="w-2 h-2 rounded-full bg-stone-700" />
+           <span className="w-2 h-2 rounded-full bg-stone-700" />
+           <span className="w-2 h-2 rounded-full bg-stone-700" />
+        </div>
+      </div>
+
+      <div className="bg-brand-surface/5 border-l border-white/10 pl-8 md:pl-12 pr-4 py-2 space-y-8 font-serif text-lg leading-loose text-stone-300">
+        {contentBlocks.map((block) => {
+          if (block.type === 'heading') {
+            return (
+              <h3 key={block.id} className="text-xl font-bold text-stone-100 font-sans mt-10 mb-4 flex items-center gap-3">
+                <span className="text-brand-gold/50 text-sm">§</span>
+                {block.text}
+              </h3>
+            );
+          }
+          if (block.type === 'highlight') {
+            return (
+              <p
+                key={block.id}
+                className="relative bg-brand-gold/10 border-l-2 border-brand-gold pl-4 py-2 my-6 cursor-pointer hover:bg-brand-gold/20 transition-colors group"
+                onClick={() => onHighlightClick?.(block.id)}
+              >
+                <span className="absolute -left-[21px] top-2 text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity text-xs">▶</span>
+                {block.text}
+              </p>
+            );
+          }
+          return <p key={block.id} className="text-stone-400">{block.text}</p>;
+        })}
+      </div>
     </div>
   );
 };
