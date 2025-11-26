@@ -9,6 +9,7 @@ export interface SearchFilters {
 export interface SearchResult {
   id: string;
   title: string;
+  citation?: string;
   snippet: string;
   court: string;
   jurisdiction: string;
