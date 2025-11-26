@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-dark text-stone-100 antialiased;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 100% 0%, rgba(206, 17, 38, 0.03) 0%, transparent 30%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-brand-dark;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-stone-800 rounded-full hover:bg-brand-gold/50 transition-colors;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-brand-surface/40 backdrop-blur-md border border-white/5;
+  }
+  .glass-hover {
+    @apply hover:bg-brand-surface/60 hover:border-brand-gold/20 transition-all duration-300;
+  }
+  .text-glow {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  .kente-border-top {
+    background: linear-gradient(90deg, #CE1126 0%, #D4AF37 50%, #006B3F 100%);
+    height: 2px;
+    width: 100%;
+  }
+  
+  /* Million Dollar Shine Effect */
+  @keyframes shine {
+    from { background-position: 0 0; }
+    to { background-position: -200% 0; }
+  }
+  .bg-shine {
+    background: linear-gradient(110deg, #0C0A09 8%, #1c1917 18%, #0C0A09 33%);
+    background-size: 200% 100%;
+    animation: shine 8s linear infinite;
+  }
+}
