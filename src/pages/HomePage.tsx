@@ -17,24 +17,24 @@ export const HomePage: React.FC = () => {
     <MainLayout>
       <div className="flex-1 flex flex-col">
         {/* Hero Section - The "Command Center" */}
-        <section className="relative border-b border-white/10 bg-brand-dark min-h-[85vh] flex flex-col">
-          <div className="flex-1 max-w-7xl mx-auto w-full grid md:grid-cols-[1.2fr_1fr]">
+        <section className="relative border-b border-white/10 bg-brand-dark min-h-[85vh] flex flex-col justify-center">
+          <div className="flex-1 max-w-7xl mx-auto w-full flex items-center justify-center">
             
-            {/* Left Column: Manifesto */}
-            <div className="relative border-r border-white/10 p-8 md:p-16 flex flex-col justify-center group/hero-left">
+            {/* Main Content */}
+            <div className="relative p-8 md:p-16 flex flex-col items-center text-center max-w-4xl mx-auto group/hero">
                {/* Decorative Top Line */}
-               <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-brand-gold/50 to-transparent" />
+               <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent" />
                
                <div className="mb-12">
-                 <span className="font-mono text-brand-gold text-xs tracking-widest uppercase opacity-70">LexiSearch</span>
+                 <span className="font-mono text-brand-gold text-xs tracking-widest uppercase opacity-70">LexiSearch Intelligence</span>
                </div>
                
-               <h1 className="text-6xl md:text-8xl font-serif font-bold text-stone-100 leading-[0.9] mb-10 tracking-tight">
+               <h1 className="text-6xl md:text-9xl font-serif font-bold text-stone-100 leading-[0.9] mb-10 tracking-tight">
                  Legal <br/>
-                 <span className="text-stone-700 group-hover/hero-left:text-stone-500 transition-colors duration-700">Intelligence.</span>
+                 <span className="text-stone-700 group-hover/hero:text-stone-500 transition-colors duration-700">Intelligence.</span>
                </h1>
                
-               <p className="text-lg text-stone-400 max-w-md font-sans leading-relaxed mb-12 border-l-2 border-brand-gold/20 pl-6">
+               <p className="text-xl text-stone-400 max-w-2xl font-sans leading-relaxed mb-12">
                  Navigate the complexities of case law with semantic precision. 
                  The new standard for legal research is here.
                </p>
@@ -42,8 +42,8 @@ export const HomePage: React.FC = () => {
                <div className="flex gap-6 items-center">
                   <Button 
                     size="lg" 
-                    className="bg-brand-gold text-brand-dark hover:bg-white hover:text-brand-dark transition-all duration-300 font-bold tracking-wide"
-                    onClick={() => document.getElementById('hero-input')?.focus()}
+                    className="bg-brand-gold text-brand-dark hover:bg-white hover:text-brand-dark transition-all duration-300 font-bold tracking-wide px-12 py-4 text-lg"
+                    onClick={() => navigate('/search')}
                   >
                     Start Research
                   </Button>
@@ -54,47 +54,6 @@ export const HomePage: React.FC = () => {
                     <span>Ask AI Assistant</span>
                     <span>→</span>
                   </button>
-               </div>
-            </div>
-
-            {/* Right Column: Interface */}
-            <div className="relative p-8 md:p-16 flex flex-col justify-center bg-brand-surface/5 group/hero-right">
-               <div className="w-full space-y-12">
-                  <div>
-                    <h2 className="font-mono text-stone-500 text-xs uppercase tracking-widest mb-6">Search Case Law</h2>
-                    
-                    <div className="relative">
-                      <input 
-                         id="hero-input"
-                         className="w-full bg-transparent text-2xl md:text-4xl font-serif text-stone-100 placeholder:text-stone-700 border-b border-stone-800 py-6 focus:outline-none focus:border-brand-gold transition-all duration-500"
-                         placeholder="Describe your case..."
-                         onKeyDown={(e) => {
-                           if (e.key === 'Enter') {
-                             handleSearch(e.currentTarget.value);
-                           }
-                         }}
-                      />
-                      <div className="absolute right-0 bottom-6 text-brand-gold opacity-50 animate-pulse">
-                        ⏎
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                     <p className="font-mono text-stone-600 text-xs uppercase tracking-widest">Trending Topics</p>
-                     <div className="flex flex-col gap-0">
-                        {['summary judgment standard', 'Miranda rights exceptions', 'patent infringement damages'].map((term, idx) => (
-                          <button
-                            key={term}
-                            onClick={() => handleSearch(term)}
-                            className="group/item flex items-center gap-4 py-3 border-b border-white/5 hover:border-brand-gold/30 transition-colors text-left"
-                          >
-                            <span className="font-mono text-xs text-stone-700 group-hover/item:text-brand-gold transition-colors">0{idx + 1}</span>
-                            <span className="text-stone-400 font-sans text-sm group-hover/item:text-stone-200 transition-colors">{term}</span>
-                          </button>
-                        ))}
-                     </div>
-                  </div>
                </div>
             </div>
           </div>

@@ -28,7 +28,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
         <div className="space-y-3">
           {/* Header: Citation & Date */}
           <div className="flex items-center gap-3 text-xs font-mono tracking-wider">
-             <span className="text-brand-gold/70">{result.citation || 'NO CITATION'}</span>
+             <span className="text-brand-gold/70">{result.citation || 'No citation available'}</span>
              <span className="text-stone-600">•</span>
              <span className="text-stone-500">{result.date}</span>
              <span className="text-stone-600">•</span>

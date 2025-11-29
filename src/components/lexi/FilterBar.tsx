@@ -23,8 +23,8 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   return (
     <div className="space-y-8 pr-6 border-r border-white/5 h-full">
       <div className="pb-4 border-b border-white/5">
-        <h2 className="font-mono text-xs text-brand-gold uppercase tracking-widest mb-1">/Filters</h2>
-        <p className="text-xs text-stone-500">Refine search vectors</p>
+        <h2 className="font-mono text-xs text-brand-gold uppercase tracking-widest mb-1">Filters</h2>
+        <p className="text-xs text-stone-500">Refine your search</p>
       </div>
 
       <div>

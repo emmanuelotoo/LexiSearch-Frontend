@@ -54,12 +54,10 @@ export const SearchResultsPage: React.FC = () => {
               <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-end">
                 <div className="flex items-center gap-2 text-xs font-mono text-stone-500">
                   <span className="text-brand-gold">●</span>
-                  <span>{total} RESULTS FOUND</span>
-                  <span className="text-stone-700">|</span>
-                  <span>0.45s</span>
+                  <span>{total} Results found</span>
                 </div>
                 <Button variant="outline" size="sm" className="border-white/10 hover:border-brand-gold/50 text-stone-400 hover:text-brand-gold font-mono text-xs uppercase tracking-wider">
-                  Export Data
+                  Export Results
                 </Button>
               </div>
             </div>
@@ -79,7 +77,7 @@ export const SearchResultsPage: React.FC = () => {
               {isLoading ? (
                 <div className="flex flex-col items-center justify-center py-32 space-y-4">
                   <Spinner className="h-8 w-8 text-brand-gold" />
-                  <p className="text-xs font-mono text-brand-gold animate-pulse">PROCESSING QUERY...</p>
+                  <p className="text-xs font-mono text-brand-gold animate-pulse">Searching case law...</p>
                 </div>
               ) : results.length > 0 ? (
                 <div className="space-y-8">
@@ -99,8 +97,8 @@ export const SearchResultsPage: React.FC = () => {
               ) : (
                 <div className="flex flex-col items-center justify-center py-32 border border-dashed border-white/10 rounded-sm">
                   <span className="text-4xl mb-4 opacity-20">∅</span>
-                  <p className="text-stone-500 font-mono text-sm">NO VECTORS FOUND</p>
-                  <p className="text-stone-600 text-xs mt-2">Try adjusting your search parameters.</p>
+                  <p className="text-stone-500 font-mono text-sm">No cases found</p>
+                  <p className="text-stone-600 text-xs mt-2">Try adjusting your search terms.</p>
                 </div>
               )}
             </div>
@@ -113,32 +111,42 @@ export const SearchResultsPage: React.FC = () => {
                 
                 <div className="mb-6 flex items-center justify-between">
                   <h3 className="font-mono text-xs text-brand-gold uppercase tracking-widest">
-                    /Intelligence_Unit
+                    AI Research Assistant
                   </h3>
                   <div className="w-2 h-2 rounded-full bg-green-500/50 animate-pulse" />
                 </div>
 
                 <div className="space-y-4 mb-6">
                   <p className="text-xs text-stone-400 leading-relaxed">
-                    AI analysis active. Contextualizing {total} results for relevance and precedent.
+                    I've analyzed these {total} results. How can I help you refine your research?
                   </p>
                   
-                  <div className="h-64 bg-black/40 border border-white/5 p-4 font-mono text-[10px] text-stone-500 overflow-y-auto custom-scrollbar">
-                    <div className="mb-2 text-brand-gold/50">&gt; SYSTEM_READY</div>
-                    <div className="mb-2">&gt; ANALYZING_PRECEDENTS...</div>
-                    <div className="mb-2">&gt; IDENTIFIED {results.length} KEY CASES</div>
-                    <div className="mb-2 text-stone-600">
-                      Most relevant: {results[0]?.title || 'N/A'}
+                  <div className="bg-brand-dark/30 border border-white/5 p-4 rounded-sm">
+                    <div className="flex gap-3 mb-3">
+                      <div className="w-6 h-6 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0">
+                        <span className="text-[10px] text-brand-gold">AI</span>
+                      </div>
+                      <div className="text-xs text-stone-300 leading-relaxed">
+                        I found {results.length} key cases matching your query. The most relevant precedent appears to be <span className="text-brand-gold/80 italic">{results[0]?.title || 'the top result'}</span>.
+                      </div>
                     </div>
-                    <div className="mt-4 text-stone-300">
-                      How can I assist with these results?
+                    <div className="pl-9">
+                      <p className="text-[10px] text-stone-500 uppercase tracking-wider mb-2">Suggested Actions:</p>
+                      <div className="space-y-2">
+                        <button className="block text-left text-xs text-stone-400 hover:text-brand-gold transition-colors">
+                          → Summarize the holding
+                        </button>
+                        <button className="block text-left text-xs text-stone-400 hover:text-brand-gold transition-colors">
+                          → Find dissenting opinions
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <ChatInput 
                   onSend={() => {}} 
-                  placeholder="Query the intelligence unit..." 
+                  placeholder="Ask a question about these results..." 
                 />
               </div>
             </div>
