@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 
 export const Header: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isSearchPage = location.pathname === '/search';
 
   return (
@@ -41,8 +42,21 @@ export const Header: React.FC = () => {
             </div>
           )}
           <div className="h-6 w-px bg-white/10 mx-2 hidden md:block" />
-          <Button variant="ghost" size="sm" className="text-stone-400 hover:text-stone-100">Sign In</Button>
-          <Button size="sm" className="shadow-brand-gold/20">Get Started</Button>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="text-stone-400 hover:text-stone-100"
+            onClick={() => navigate('/signin')}
+          >
+            Sign In
+          </Button>
+          <Button 
+            size="sm" 
+            className="shadow-brand-gold/20"
+            onClick={() => navigate('/signup')}
+          >
+            Get Started
+          </Button>
         </div>
       </div>
     </header>
