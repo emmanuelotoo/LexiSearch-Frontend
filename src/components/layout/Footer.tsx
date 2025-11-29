@@ -81,7 +81,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-stone-600 text-xs font-mono">
-            © 2025 LexiSearch Intelligence Systems. All rights reserved.
+            © 2025 LexiSearch. All rights reserved.
           </p>
           <div className="text-stone-700 text-xs font-mono uppercase tracking-widest">
             Accra • London • New York

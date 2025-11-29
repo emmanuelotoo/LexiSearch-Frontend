@@ -26,7 +26,7 @@ export const HomePage: React.FC = () => {
                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-brand-gold/50 to-transparent" />
                
                <div className="mb-12">
-                 <span className="font-mono text-brand-gold text-xs tracking-widest uppercase opacity-70">/00 System_Active</span>
+                 <span className="font-mono text-brand-gold text-xs tracking-widest uppercase opacity-70">LexiSearch</span>
                </div>
                
                <h1 className="text-6xl md:text-8xl font-serif font-bold text-stone-100 leading-[0.9] mb-10 tracking-tight">
@@ -45,7 +45,7 @@ export const HomePage: React.FC = () => {
                     className="bg-brand-gold text-brand-dark hover:bg-white hover:text-brand-dark transition-all duration-300 font-bold tracking-wide"
                     onClick={() => document.getElementById('hero-input')?.focus()}
                   >
-                    Initialize Search
+                    Start Research
                   </Button>
                   <button 
                     onClick={() => navigate('/chat')}
@@ -61,7 +61,7 @@ export const HomePage: React.FC = () => {
             <div className="relative p-8 md:p-16 flex flex-col justify-center bg-brand-surface/5 group/hero-right">
                <div className="w-full space-y-12">
                   <div>
-                    <h2 className="font-mono text-stone-500 text-xs uppercase tracking-widest mb-6">Input Query</h2>
+                    <h2 className="font-mono text-stone-500 text-xs uppercase tracking-widest mb-6">Search Case Law</h2>
                     
                     <div className="relative">
                       <input 
@@ -81,7 +81,7 @@ export const HomePage: React.FC = () => {
                   </div>
 
                   <div className="space-y-6">
-                     <p className="font-mono text-stone-600 text-xs uppercase tracking-widest">/Recent_Vectors</p>
+                     <p className="font-mono text-stone-600 text-xs uppercase tracking-widest">Trending Topics</p>
                      <div className="flex flex-col gap-0">
                         {['summary judgment standard', 'Miranda rights exceptions', 'patent infringement damages'].map((term, idx) => (
                           <button
@@ -142,7 +142,7 @@ export const HomePage: React.FC = () => {
                     {/* Column 1: ID & Icon */}
                     <div className="flex items-center gap-6">
                       <span className="text-sm font-mono text-brand-gold/50 group-hover/item:text-brand-gold transition-colors duration-300">
-                        /{feature.id}
+                        {feature.id}
                       </span>
                       <span className="text-2xl opacity-50 group-hover/item:opacity-100 group-hover/item:scale-110 transition-all duration-300 filter grayscale group-hover/item:grayscale-0">
                         {feature.icon}

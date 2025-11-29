@@ -37,7 +37,6 @@ export const Header: React.FC = () => {
               <Input 
                 placeholder="Search cases..." 
                 className="h-9 bg-brand-surface/50 border-white/5 focus:bg-brand-surface"
-                iconRight={<span className="text-xs text-stone-500 border border-stone-700 px-1.5 py-0.5 rounded-sm">⌘K</span>}
               />
             </div>
           )}
