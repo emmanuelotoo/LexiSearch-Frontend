@@ -22,9 +22,9 @@ export const Footer: React.FC = () => {
               The new standard for legal intelligence. 
               Powered by advanced transformer models for semantic precision.
             </p>
-            <div className="flex items-center gap-2 text-xs font-mono text-brand-gold/70 uppercase tracking-widest">
+            <div className="flex items-center gap-2 text-xs font-sans text-brand-gold/70 font-medium tracking-wide">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              System Status: Operational
+              System Operational
             </div>
           </div>
 
@@ -36,31 +36,31 @@ export const Footer: React.FC = () => {
                 { label: 'Search Engine', to: '/search' },
                 { label: 'AI Assistant', to: '/chat' },
                 { label: 'Case Library', to: '/library' },
-                { label: 'API Access', to: '#' },
+                { label: 'API Access', to: '/api' },
               ]
             },
             {
               header: '/Company',
               links: [
-                { label: 'About Us', to: '#' },
-                { label: 'Methodology', to: '#' },
-                { label: 'Careers', to: '#' },
-                { label: 'Contact', to: '#' },
+                { label: 'About Us', to: '/about' },
+                { label: 'Methodology', to: '/methodology' },
+                { label: 'Careers', to: '/careers' },
+                { label: 'Contact', to: '/contact' },
               ]
             },
             {
               header: '/Legal',
               links: [
-                { label: 'Privacy Policy', to: '#' },
-                { label: 'Terms of Service', to: '#' },
-                { label: 'Cookie Policy', to: '#' },
-                { label: 'Security', to: '#' },
+                { label: 'Privacy Policy', to: '/privacy' },
+                { label: 'Terms of Service', to: '/terms' },
+                { label: 'Cookie Policy', to: '/cookies' },
+                { label: 'Security', to: '/security' },
               ]
             }
           ].map((column) => (
             <div key={column.header} className="space-y-6">
-              <h4 className="font-mono text-xs text-stone-600 uppercase tracking-widest">
-                {column.header}
+              <h4 className="font-sans text-xs text-stone-600 font-bold uppercase tracking-widest">
+                {column.header.replace('/', '')}
               </h4>
               <ul className="space-y-4">
                 {column.links.map((link) => (
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
             © 2025 LexiSearch. All rights reserved.
           </p>
           <div className="text-stone-700 text-xs font-mono uppercase tracking-widest">
-            Accra • London • New York
+             • Accra
           </div>
         </div>
       </div>

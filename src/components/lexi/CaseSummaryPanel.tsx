@@ -37,13 +37,13 @@ export const CaseSummaryPanel: React.FC<CaseSummaryPanelProps> = ({
           <Button 
             variant="outline" 
             onClick={onSave} 
-            className="border-white/10 hover:border-brand-gold/50 text-stone-400 hover:text-brand-gold font-mono text-xs uppercase tracking-wider"
+            className="border-white/10 hover:border-brand-gold/50 text-stone-400 hover:text-brand-gold font-sans font-bold text-xs uppercase tracking-wider"
           >
-            🔖 Save_Case
+            🔖 Save Case
           </Button>
           <Button 
             onClick={onAskAI} 
-            className="bg-brand-gold text-brand-dark hover:bg-white font-bold font-mono text-xs uppercase tracking-wider"
+            className="bg-brand-gold text-brand-dark hover:bg-white font-bold font-sans text-xs uppercase tracking-wider"
           >
             ✨ Analyze
           </Button>

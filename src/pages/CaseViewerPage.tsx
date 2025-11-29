@@ -79,8 +79,8 @@ export const CaseViewerPage: React.FC = () => {
                 <div className="p-4 border-b border-white/10 flex items-center justify-between bg-brand-dark">
                   <div className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                    <span className="font-mono text-xs text-stone-300 uppercase tracking-widest">
-                      /Context_Assistant
+                    <span className="font-sans text-xs text-stone-300 font-bold uppercase tracking-widest">
+                      Case Assistant
                     </span>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ export const CaseViewerPage: React.FC = () => {
                   <ChatInput
                     onSend={sendMessage}
                     isLoading={isChatLoading}
-                    placeholder="Query case context..."
+                    placeholder="Ask about this case..."
                   />
                 </div>
               </div>

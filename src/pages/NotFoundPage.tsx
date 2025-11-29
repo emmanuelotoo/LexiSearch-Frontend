@@ -19,8 +19,8 @@ export const NotFoundPage: React.FC = () => {
         <div className="space-y-6 -mt-12">
           <div className="flex items-center justify-center gap-3">
             <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-            <h2 className="text-xl font-mono text-red-400 uppercase tracking-widest">
-              System_Error: Path_Not_Found
+            <h2 className="text-xl font-sans text-red-400 font-medium tracking-widest uppercase">
+              Page Not Found
             </h2>
             <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
           </div>
@@ -38,14 +38,14 @@ export const NotFoundPage: React.FC = () => {
               onClick={() => navigate('/')}
               className="bg-brand-gold text-brand-dark hover:bg-white"
             >
-              Return to Headquarters
+              Return Home
             </Button>
             <Button 
               variant="outline" 
               onClick={() => navigate(-1)}
               className="border-stone-700 text-stone-400 hover:text-brand-gold hover:border-brand-gold"
             >
-              Trace Back
+              Go Back
             </Button>
           </div>
         </div>

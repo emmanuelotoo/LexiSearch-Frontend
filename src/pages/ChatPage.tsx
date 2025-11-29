@@ -17,8 +17,8 @@ export const ChatPage: React.FC = () => {
           <div className="max-w-[1800px] mx-auto px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <h1 className="font-mono text-sm text-stone-300 uppercase tracking-widest">
-                /AI_Counsel_Interface
+              <h1 className="font-sans text-sm text-stone-300 font-medium tracking-wide">
+                AI Legal Counsel
               </h1>
             </div>
             
@@ -52,11 +52,11 @@ export const ChatPage: React.FC = () => {
                 <ChatInput
                   onSend={sendMessage}
                   isLoading={isLoading}
-                  placeholder="Input legal query or case citation..."
+                  placeholder="Ask a legal question or describe your case..."
                 />
-                <div className="mt-2 flex justify-between text-[10px] font-mono text-stone-600 uppercase tracking-wider">
-                  <span>Model: Lexi-Transformer-v4</span>
-                  <span>Encryption: AES-256</span>
+                <div className="mt-2 flex justify-between text-[10px] text-stone-500 font-medium tracking-wide">
+                  <span>Powered by Lexi AI</span>
+                  <span>Secure Connection</span>
                 </div>
               </div>
             </div>
@@ -66,8 +66,8 @@ export const ChatPage: React.FC = () => {
           <div className="hidden xl:flex flex-col w-[400px] bg-brand-surface/5">
             {/* Suggested Prompts Section */}
             <div className="p-6 border-b border-white/10">
-              <h3 className="font-mono text-xs text-brand-gold uppercase tracking-widest mb-6">
-                /Suggested_Vectors
+              <h3 className="font-sans text-xs text-brand-gold font-bold uppercase tracking-widest mb-6">
+                Suggested Inquiries
               </h3>
               <div className="space-y-3">
                 {[
@@ -81,7 +81,6 @@ export const ChatPage: React.FC = () => {
                     className="w-full text-left group relative p-4 border border-white/5 hover:border-brand-gold/30 bg-brand-dark/50 transition-all duration-300"
                   >
                     <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-transparent group-hover:bg-brand-gold transition-colors" />
-                    <span className="font-mono text-[10px] text-stone-600 block mb-1">0{idx + 1}</span>
                     <span className="text-sm text-stone-400 group-hover:text-stone-200 font-sans transition-colors">
                       {prompt}
                     </span>
@@ -91,14 +90,15 @@ export const ChatPage: React.FC = () => {
             </div>
             
             {/* Sources Section */}
+            {/* Sources Section */}
             <div className="flex-1 p-6">
-              <h3 className="font-mono text-xs text-brand-gold uppercase tracking-widest mb-6">
-                /Active_Citations
+              <h3 className="font-sans text-xs text-brand-gold font-bold uppercase tracking-widest mb-6">
+                Active Citations
               </h3>
               <div className="h-full border border-dashed border-white/10 rounded-sm flex flex-col items-center justify-center text-stone-600 p-8 text-center">
                 <span className="text-2xl mb-2 opacity-20">⚖️</span>
-                <p className="text-xs font-mono">NO CITATIONS LOADED</p>
-                <p className="text-[10px] mt-2 max-w-[200px]">
+                <p className="text-sm text-stone-500 font-medium">No citations loaded</p>
+                <p className="text-xs text-stone-600 mt-2 max-w-[200px]">
                   Relevant case law and statutes will appear here during analysis.
                 </p>
               </div>

@@ -16,8 +16,8 @@ export const CaseCitationsPanel: React.FC<CaseCitationsPanelProps> = ({
     <div className="space-y-6 p-6 border border-white/5 bg-brand-surface/5 mt-6">
       <div className="flex items-center gap-2 mb-4">
         <span className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
-        <h3 className="font-mono text-xs text-brand-gold uppercase tracking-widest">
-          /Citation_Network
+        <h3 className="font-sans text-xs text-brand-gold font-bold uppercase tracking-widest">
+          Citation Network
         </h3>
       </div>
 
@@ -37,17 +37,17 @@ export const CaseCitationsPanel: React.FC<CaseCitationsPanelProps> = ({
               </div>
             </div>
             
-            <span className={`text-[10px] uppercase tracking-widest px-2 py-1 border ${
+            <span className={`text-[10px] font-sans font-bold uppercase tracking-widest px-2 py-1 border ${
               citation.relation === 'cites' 
                 ? 'border-stone-700 text-stone-500' 
                 : 'border-brand-gold/30 text-brand-gold/70'
             }`}>
-              {citation.relation === 'cites' ? 'OUT' : 'IN'}
+              {citation.relation === 'cites' ? 'Cites' : 'Cited By'}
             </span>
           </div>
         ))}
         {citations.length === 0 && (
-          <div className="text-xs font-mono text-stone-600 text-center py-8">NO_LINKS_FOUND</div>
+          <div className="text-xs font-sans text-stone-600 text-center py-8 italic">No citations found</div>
         )}
       </div>
     </div>

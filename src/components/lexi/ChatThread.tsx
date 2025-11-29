@@ -34,7 +34,7 @@ export const ChatThread: React.FC<ChatThreadProps> = ({
         <div className="flex justify-start mb-4">
           <div className="bg-brand-surface rounded-sm rounded-bl-none px-4 py-3 border border-white/5 flex items-center gap-2 shadow-lg">
             <Spinner className="h-4 w-4 text-brand-gold" />
-            <span className="text-xs text-stone-400 font-mono">AI is analyzing...</span>
+            <span className="text-xs text-stone-400 font-sans">AI is thinking...</span>
           </div>
         </div>
       )}

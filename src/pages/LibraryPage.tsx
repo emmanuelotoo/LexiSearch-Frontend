@@ -25,8 +25,8 @@ export const LibraryPage: React.FC = () => {
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   <span className="w-2 h-2 bg-brand-gold rounded-full" />
-                  <h1 className="font-mono text-sm text-brand-gold uppercase tracking-widest">
-                    /Knowledge_Base
+                  <h1 className="font-sans text-sm text-brand-gold font-bold uppercase tracking-widest">
+                    Knowledge Base
                   </h1>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-100">
@@ -35,11 +35,11 @@ export const LibraryPage: React.FC = () => {
               </div>
               
               <div className="flex gap-4">
-                <Button variant="outline" className="border-white/10 hover:border-brand-gold/50 text-stone-400 hover:text-brand-gold font-mono text-xs uppercase tracking-wider">
-                  Export_All
+                <Button variant="outline" className="border-white/10 hover:border-brand-gold/50 text-stone-400 hover:text-brand-gold font-sans text-xs uppercase tracking-wider font-bold">
+                  Export All
                 </Button>
-                <Button className="bg-brand-gold text-brand-dark hover:bg-white font-bold font-mono text-xs uppercase tracking-wider">
-                  + New_Entry
+                <Button className="bg-brand-gold text-brand-dark hover:bg-white font-bold font-sans text-xs uppercase tracking-wider">
+                  + New Entry
                 </Button>
               </div>
             </div>
@@ -74,10 +74,10 @@ export const LibraryPage: React.FC = () => {
           ) : (
             <div className="flex flex-col items-center justify-center py-32 border border-dashed border-white/10 rounded-sm bg-brand-surface/5">
               <EmptyState
-                title="ARCHIVE_EMPTY"
-                description={activeTab === 'all' ? "No knowledge vectors stored." : `No ${activeTab} vectors found.`}
+                title="Library Empty"
+                description={activeTab === 'all' ? "No items saved yet." : `No ${activeTab} items found.`}
                 primaryAction={{
-                  label: 'Initialize Search',
+                  label: 'Start Research',
                   onClick: () => navigate('/search'),
                 }}
               />
