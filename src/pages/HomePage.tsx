@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MainLayout } from '../layouts/MainLayout';
 import { Button } from '../components/ui/Button';
+import { Input } from '../components/ui/Input';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export const HomePage: React.FC = () => {
                  <span className="font-mono text-brand-gold text-xs tracking-widest uppercase opacity-70">LexiSearch Intelligence</span>
                </div>
                
-               <h1 className="text-6xl md:text-9xl font-serif font-bold text-stone-100 leading-[0.9] mb-10 tracking-tight">
+               <h1 className="text-5xl md:text-9xl font-serif font-bold text-stone-100 leading-[0.9] mb-10 tracking-tight">
                  Legal <br/>
                  <span className="text-stone-700 group-hover/hero:text-stone-500 transition-colors duration-700">Intelligence.</span>
                </h1>
@@ -74,22 +75,26 @@ export const HomePage: React.FC = () => {
                 { 
                   id: '01',
                   title: 'Semantic Search', 
-                  desc: 'Our transformer models understand legal concepts, analogies, and procedural context—going far beyond simple keyword matching.'
+                  desc: 'Our transformer models understand legal concepts, analogies, and procedural context—going far beyond simple keyword matching.',
+                  link: '/search'
                 },
                 { 
                   id: '02',
                   title: 'Predictive Analysis', 
-                  desc: 'Instantaneously extract holdings, dicta, and procedural posture from thousands of pages to predict case outcomes.'
+                  desc: 'Instantaneously extract holdings, dicta, and procedural posture from thousands of pages to predict case outcomes.',
+                  link: '/methodology'
                 },
                 { 
                   id: '03',
                   title: 'Authority Graph', 
-                  desc: 'Visual citation networks help you identify good law, spot implicit overrulings, and strengthen your arguments.'
+                  desc: 'Visual citation networks help you identify good law, spot implicit overrulings, and strengthen your arguments.',
+                  link: '/methodology'
                 },
               ].map((feature) => (
                 <div 
                   key={feature.id} 
-                  className="group/item relative border-t border-white/10 py-12 md:py-16 transition-all duration-500 hover:border-white/20"
+                  onClick={() => navigate(feature.link)}
+                  className="group/item relative border-t border-white/10 py-12 md:py-16 transition-all duration-500 hover:border-white/20 cursor-pointer"
                 >
                   {/* Hover Background Reveal */}
                   <div className="absolute inset-0 bg-gradient-to-r from-brand-gold/[0.03] to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-500 ease-out" />
@@ -129,6 +134,63 @@ export const HomePage: React.FC = () => {
               ))}
               {/* Closing Border */}
               <div className="border-t border-white/10" />
+            </div>
+          </div>
+        </section>
+
+        {/* Waitlist Section */}
+        <section className="relative py-32 border-t border-white/10 bg-brand-dark overflow-hidden">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02]" />
+          
+          <div className="max-w-3xl mx-auto px-6 relative z-10">
+            <div className="flex flex-col items-center text-center">
+              {/* Status Indicator */}
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-brand-surface/50 border border-white/10 rounded-full mb-8 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-gold opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-gold"></span>
+                </span>
+                <span className="text-xs font-mono text-stone-300 uppercase tracking-widest">
+                  Batch #01: <span className="text-brand-gold">Open</span>
+                </span>
+              </div>
+
+              <h2 className="text-5xl md:text-7xl font-serif font-bold text-stone-100 mb-6 tracking-tight">
+                Join the Waitlist
+              </h2>
+              
+              <p className="text-lg text-stone-400 mb-12 max-w-xl leading-relaxed">
+                Experience the next generation of legal research. 
+                Reserve your spot in line for early access to the LexiSearch platform.
+              </p>
+
+              {/* The Input Area */}
+              <div className="w-full max-w-md relative group">
+                <div className="absolute -inset-1 bg-gradient-to-r from-brand-gold/20 via-stone-500/20 to-brand-gold/20 rounded-lg blur opacity-25 group-hover:opacity-50 group-focus-within:opacity-100 group-focus-within:duration-200 transition duration-1000"></div>
+                <form className="relative flex bg-brand-dark border border-white/10 focus-within:border-brand-gold/50 rounded-lg p-1.5 shadow-2xl transition-colors duration-300" onSubmit={(e) => e.preventDefault()}>
+                  <input 
+                    type="email" 
+                    placeholder="name@lawfirm.com" 
+                    className="flex-1 bg-transparent border-none text-stone-200 placeholder-stone-600 focus:ring-0 focus:outline-none px-4 py-3 font-mono text-sm"
+                  />
+                  <Button className="bg-stone-100 text-brand-dark hover:bg-brand-gold hover:text-brand-dark font-bold px-6 rounded-md transition-all duration-300">
+                    Join
+                  </Button>
+                </form>
+              </div>
+
+              {/* Social Proof / Scarcity */}
+              <div className="mt-10 flex items-center gap-8 text-xs font-mono text-stone-600 uppercase tracking-wider">
+                <div className="flex items-center gap-2">
+                  <span className="text-stone-400">2,104</span>
+                  <span>On Waitlist</span>
+                </div>
+                <div className="w-1 h-1 bg-stone-800 rounded-full" />
+                <div className="flex items-center gap-2">
+                  <span className="text-stone-400">~14 Days</span>
+                  <span>Est. Wait</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
