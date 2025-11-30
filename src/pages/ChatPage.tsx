@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { MainLayout } from '../layouts/MainLayout';
+import { Header } from '../components/layout/Header';
+import { MobileNav } from '../components/layout/MobileNav';
 import { ChatThread } from '../components/lexi/ChatThread';
 import { ChatInput } from '../components/lexi/ChatInput';
 import { Select } from '../components/ui/Select';
@@ -9,11 +10,21 @@ export const ChatPage: React.FC = () => {
   const { messages, isLoading, sendMessage } = useChat();
   const [jurisdiction, setJurisdiction] = useState('');
 
+  // Dynamic suggestions (mocked for now)
+  const suggestedInquiries = [
+    'What are the elements of negligence in CA?',
+    'Summarize the latest ruling on data privacy.',
+    'Draft a motion to dismiss template.',
+  ];
+
   return (
-    <MainLayout>
-      <div className="fixed top-16 left-0 right-0 bottom-16 md:bottom-0 bg-brand-dark z-30 flex flex-col">
-        {/* Header Bar */}
-        <div className="border-b border-white/10 bg-brand-dark/95 backdrop-blur-md z-10">
+    <div className="flex flex-col h-screen bg-brand-dark overflow-hidden">
+      <Header />
+
+      {/* Main Content Container */}
+      <div className="flex-1 flex flex-col relative overflow-hidden">
+        {/* Header Bar (Jurisdiction Selector) */}
+        <div className="border-b border-white/10 bg-brand-dark/95 backdrop-blur-md z-10 shrink-0">
           <div className="max-w-[1800px] mx-auto px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -37,7 +48,7 @@ export const ChatPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex-1 flex overflow-hidden max-w-[1800px] mx-auto w-full">
+        <div className="flex-1 flex overflow-hidden max-w-[1800px] mx-auto w-full pb-16 md:pb-0">
           {/* Main Chat Area */}
           <div className="flex-1 flex flex-col relative border-r border-white/10">
             {/* Chat Thread */}
@@ -47,7 +58,7 @@ export const ChatPage: React.FC = () => {
             </div>
 
             {/* Input Area */}
-            <div className="p-6 bg-brand-dark border-t border-white/10">
+            <div className="p-6 bg-brand-dark border-t border-white/10 shrink-0">
               <div className="max-w-4xl mx-auto">
                 <ChatInput
                   onSend={sendMessage}
@@ -63,18 +74,14 @@ export const ChatPage: React.FC = () => {
           </div>
 
           {/* Right Context Panel (Desktop) */}
-          <div className="hidden xl:flex flex-col w-[400px] bg-brand-surface/5">
+          <div className="hidden xl:flex flex-col w-[400px] bg-brand-surface/5 border-l border-white/5">
             {/* Suggested Prompts Section */}
             <div className="p-6 border-b border-white/10">
               <h3 className="font-sans text-xs text-brand-gold font-bold uppercase tracking-widest mb-6">
                 Suggested Inquiries
               </h3>
               <div className="space-y-3">
-                {[
-                  'What are the elements of negligence in CA?',
-                  'Summarize the latest ruling on data privacy.',
-                  'Draft a motion to dismiss template.',
-                ].map((prompt, idx) => (
+                {suggestedInquiries.map((prompt, idx) => (
                   <button
                     key={prompt}
                     onClick={() => sendMessage(prompt)}
@@ -89,7 +96,6 @@ export const ChatPage: React.FC = () => {
               </div>
             </div>
             
-            {/* Sources Section */}
             {/* Sources Section */}
             <div className="flex-1 p-6">
               <h3 className="font-sans text-xs text-brand-gold font-bold uppercase tracking-widest mb-6">
@@ -106,6 +112,8 @@ export const ChatPage: React.FC = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
+      
+      <MobileNav />
+    </div>
   );
 };
