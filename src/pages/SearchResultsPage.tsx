@@ -11,6 +11,7 @@ import { Spinner } from '../components/ui/Spinner';
 import { Modal } from '../components/ui/Modal';
 import { useSearch } from '../hooks/useSearch';
 import { SearchFilters } from '../types/search';
+import { DEFAULT_PAGE_SIZE } from '../utils/constants';
 
 export const SearchResultsPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,7 +21,7 @@ export const SearchResultsPage: React.FC = () => {
   const [filters, setFilters] = useState<SearchFilters>({});
   const [page, setPage] = useState(1);
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
-  const pageSize = 10;
+  const pageSize = DEFAULT_PAGE_SIZE;
 
   const { results, total, isLoading } = useSearch({ query, filters, page, pageSize });
 
