@@ -11,7 +11,7 @@ export const ChatPage: React.FC = () => {
 
   return (
     <MainLayout>
-      <div className="flex flex-col h-[calc(100vh-4rem)] bg-brand-dark">
+      <div className="fixed top-16 left-0 right-0 bottom-16 md:bottom-0 bg-brand-dark z-30 flex flex-col">
         {/* Header Bar */}
         <div className="border-b border-white/10 bg-brand-dark/95 backdrop-blur-md z-10">
           <div className="max-w-[1800px] mx-auto px-6 py-4 flex items-center justify-between">

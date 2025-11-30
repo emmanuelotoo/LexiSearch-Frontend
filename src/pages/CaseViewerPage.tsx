@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MainLayout } from '../layouts/MainLayout';
 import { Breadcrumbs } from '../components/layout/Breadcrumbs';
@@ -15,6 +15,7 @@ import { useChat } from '../hooks/useChat';
 export const CaseViewerPage: React.FC = () => {
   const { caseId } = useParams<{ caseId: string }>();
   const navigate = useNavigate();
+  const chatInputRef = useRef<HTMLTextAreaElement>(null);
   const { caseData, citations, isLoading } = useCase(caseId);
   const { messages, isLoading: isChatLoading, sendMessage } = useChat([
     { id: 'init', role: 'assistant', content: 'I have analyzed this case. Ask me anything about the holding, facts, or reasoning.', createdAt: new Date().toISOString() }
@@ -63,7 +64,7 @@ export const CaseViewerPage: React.FC = () => {
               <CaseSummaryPanel
                 caseData={caseData}
                 onSave={() => console.log('Saved case')}
-                onAskAI={() => document.getElementById('case-chat-input')?.focus()}
+                onAskAI={() => chatInputRef.current?.focus()}
               />
               
               <CaseContentViewer
@@ -73,7 +74,7 @@ export const CaseViewerPage: React.FC = () => {
             </div>
 
             {/* Sidebar Column */}
-            <div className="space-y-6 xl:sticky xl:top-40 h-fit">
+            <div className="space-y-6 xl:sticky xl:top-32 xl:max-h-[calc(100vh-9rem)] xl:overflow-y-auto pr-2">
               {/* AI Assistant Panel */}
               <div className="border border-white/10 bg-brand-surface/5 flex flex-col h-[600px]">
                 <div className="p-4 border-b border-white/10 flex items-center justify-between bg-brand-dark">
@@ -92,6 +93,7 @@ export const CaseViewerPage: React.FC = () => {
 
                 <div className="p-4 border-t border-white/10 bg-brand-dark">
                   <ChatInput
+                    ref={chatInputRef}
                     onSend={sendMessage}
                     isLoading={isChatLoading}
                     placeholder="Ask about this case..."

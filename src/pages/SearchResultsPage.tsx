@@ -8,6 +8,7 @@ import { PaginationControls } from '../components/lexi/PaginationControls';
 import { ChatInput } from '../components/lexi/ChatInput';
 import { Button } from '../components/ui/Button';
 import { Spinner } from '../components/ui/Spinner';
+import { Modal } from '../components/ui/Modal';
 import { useSearch } from '../hooks/useSearch';
 import { SearchFilters } from '../types/search';
 
@@ -18,6 +19,7 @@ export const SearchResultsPage: React.FC = () => {
   const query = searchParams.get('query') || '';
   const [filters, setFilters] = useState<SearchFilters>({});
   const [page, setPage] = useState(1);
+  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
   const pageSize = 10;
 
   const { results, total, isLoading } = useSearch({ query, filters, page, pageSize });
@@ -50,15 +52,24 @@ export const SearchResultsPage: React.FC = () => {
                   placeholder="Refine query..."
                 />
               </div>
-              
               <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-end">
                 <div className="flex items-center gap-2 text-xs font-mono text-stone-500">
                   <span className="text-brand-gold">●</span>
                   <span>{total} Results found</span>
                 </div>
-                <Button variant="outline" size="sm" className="border-white/10 hover:border-brand-gold/50 text-stone-400 hover:text-brand-gold font-mono text-xs uppercase tracking-wider">
-                  Export Results
-                </Button>
+                <div className="flex gap-2">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="lg:hidden border-white/10 text-stone-400 hover:text-brand-gold font-mono text-xs uppercase tracking-wider"
+                    onClick={() => setIsMobileFiltersOpen(true)}
+                  >
+                    Filters
+                  </Button>
+                  <Button variant="outline" size="sm" className="border-white/10 hover:border-brand-gold/50 text-stone-400 hover:text-brand-gold font-mono text-xs uppercase tracking-wider">
+                    Export Results
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -67,10 +78,31 @@ export const SearchResultsPage: React.FC = () => {
         <div className="flex-1 max-w-[1800px] mx-auto w-full px-6 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr_350px] gap-12 items-start">
             
-            {/* Left: Filters Panel */}
+            {/* Left: Filters Panel (Desktop) */}
             <div className="hidden lg:block sticky top-40">
               <FilterBar filters={filters} onChange={setFilters} />
             </div>
+
+            {/* Mobile Filters Modal */}
+            <Modal
+              isOpen={isMobileFiltersOpen}
+              onClose={() => setIsMobileFiltersOpen(false)}
+              title="Refine Results"
+            >
+              <div className="p-4">
+                <FilterBar filters={filters} onChange={setFilters} />
+                <div className="mt-6 pt-4 border-t border-white/10">
+                  <Button 
+                    className="w-full bg-brand-gold text-brand-dark font-bold"
+                    onClick={() => setIsMobileFiltersOpen(false)}
+                  >
+                    Apply Filters
+                  </Button>
+                </div>
+              </div>
+            </Modal>
+
+            {/* Middle: Results Stream */}
 
             {/* Middle: Results Stream */}
             <div className="min-h-[500px]">

@@ -11,14 +11,14 @@ interface ChatInputProps {
   disabled?: boolean;
 }
 
-export const ChatInput: React.FC<ChatInputProps> = ({
+export const ChatInput = React.forwardRef<HTMLTextAreaElement, ChatInputProps>(({
   value,
   onChange,
   onSend,
   isLoading,
   placeholder = 'Ask a follow-up question...',
   disabled,
-}) => {
+}, ref) => {
   const [internalValue, setInternalValue] = useState('');
   
   const isControlled = value !== undefined;
@@ -59,6 +59,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
         </div>
 
         <TextArea
+          ref={ref}
           value={currentValue}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
@@ -85,4 +86,6 @@ export const ChatInput: React.FC<ChatInputProps> = ({
       <div className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand-gold group-focus-within:w-full transition-all duration-500 ease-out" />
     </div>
   );
-};
+});
+
+ChatInput.displayName = 'ChatInput';

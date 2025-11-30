@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { cn } from './Button';
 
 interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
@@ -6,13 +6,13 @@ interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
   error?: string;
 }
 
-export const TextArea: React.FC<TextAreaProps> = ({
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(({
   className,
   label,
   error,
   id,
   ...props
-}) => {
+}, ref) => {
   const areaId = id || React.useId();
 
   return (
@@ -23,6 +23,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
         </label>
       )}
       <textarea
+        ref={ref}
         id={areaId}
         className={cn(
           'block w-full rounded-none border border-white/10 bg-brand-dark/50 text-stone-100 placeholder-stone-600 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors p-3 font-mono text-sm',
@@ -34,4 +35,6 @@ export const TextArea: React.FC<TextAreaProps> = ({
       {error && <p className="mt-1 text-xs font-mono text-red-500">{error}</p>}
     </div>
   );
-};
+});
+
+TextArea.displayName = 'TextArea';
